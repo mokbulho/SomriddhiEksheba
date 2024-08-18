@@ -1,4 +1,4 @@
-describe('User SignUp', () => {
+describe('Login', () => {
   it('as a super admin', () => {
     cy.visit('https://somriddhi.eksheba.gov.bd/')
     cy.viewport(1920, 1080);
