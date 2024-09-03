@@ -1,7 +1,6 @@
 describe('Jobs site full automation', () => {
     beforeEach(() => {
         cy.visit('https://jobs.softbd.xyz/');
-        cy.viewport(1920, 1080);
     });
 
 
