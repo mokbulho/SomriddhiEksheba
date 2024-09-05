@@ -1,52 +1,54 @@
-describe('Jobs site full automation', () => {
-    beforeEach(() => {
+describe('Job site automations', () => {
+
+    // it('View Job Home page', () => {
+    //     cy.visit('https://jobs.softbd.xyz/');
+    //     cy.scrollTo('bottom');
+    //     cy.wait(1000);
+    //     cy.scrollTo('top');
+    // })
+
+    // it('View Job Home page', () => {
+    //     cy.visit('https://jobs.softbd.xyz/');
+    //     cy.get(':nth-child(1) > .card > .d-flex > .mt-3 > .me-2').first().click();
+    //     cy.scrollTo('bottom');
+    //     cy.wait(1000);
+    //     cy.scrollTo('top');
+    // })
+
+    // it('New Registration', () => {
+    //     cy.visit('https://jobs.softbd.xyz/');
+    //     cy.get('.text-end > .me-4').click();
+    //     cy.get('input[name="full_name"]').type('Ariful Islam');
+    //     cy.get('input[name="phone_number"]').type('01550703082');
+    //     cy.get('input[name="password"]').type('password');
+    //     cy.get('input[type="submit"].btn.btn-primary.form-control').click();
+    // })
+
+    it('Login', () => {
         cy.visit('https://jobs.softbd.xyz/');
-        cy.viewport(1920, 1080);
-    });
+        cy.get('a.btn.me-2.text-primary').click();
+        cy.get('input[name="phone_number"]').type('01550703082');
+        cy.get('input[name="password"]').type('password');
+        cy.get('input[type="submit"].btn.btn-primary.form-control').click();
+        cy.get('.d-flex > .btn').click();
 
-    it('Home page', () => {
-        cy.window().then((win) => {
-            const scrollHeight = win.document.body.scrollHeight;
-            for (let i = 0; i <= scrollHeight; i += 200) { // Adjust the step size as needed
-                cy.scrollTo(0, i).wait(100); // Adjust the wait time as needed
-            }
-        });
-        cy.window().then((win) => {
-            const scrollHeight = win.document.body.scrollHeight;
-
-            // Start from the bottom of the page
-            win.scrollTo(0, scrollHeight);
-
-            for (let i = scrollHeight; i >= 0; i -= 200) { // Adjust the step size as needed
-                cy.scrollTo(0, i).wait(100); // Adjust the wait time as needed
-            }
-        });
-    });
-   
-    it('Job Circular', () => {
-        cy.get('h2.fw-bold').contains('Job Circular').then(($el) => {
-            $el.css('border', '2px solid red');
-            $el.css('background-color', 'yellow');
-        });
-        cy.get('#job_cards_container .col-md-6.mb-4').first().find('a.btn-primary').contains('Details').click();
-    });
-
-    // it('Apply job for new user', () => {
-    //     cy.contains('a', 'Apply').click();
-    //     cy.contains('a', 'Register').click();
-
-    //     // cy.get('input[name="full_name"]').type('John Doe');
-    //     // cy.get('input[name="phone_number"]').type('01680881140');
-    //     // cy.get('input[name="password"]').type('password');
-    //     // cy.get('input[type="submit"].btn.btn-primary.form-control').click();
-
-    // });
-
-    it('View Job details and Login', () => {
+        cy.get('input[name="full_name"]').type('Joddhn Doe');
+        cy.get('input[name="father_name"]').type('Fatdher Name');
+        cy.get('input[name="mother_name"]').type('Modther Name');
+        cy.get('input[name="nid"]').type('1234467890');
+        cy.get('input[name="email"]').type('john.doe@example.com');
+        cy.get('input[name="dob"]').type('01/01/1990');
+        cy.get('input[name="academic_qualifications[0][details]"]').type('Bachelor\'s Degree');
+        cy.get('input[name="academic_qualifications[0][result]"]').type('First Class');
+        cy.get('input[name="academic_qualifications[0][document]"]').attachFile('marksheet.pdf');
+        cy.get('input[name="present_local_address"]').type('123 Present St.');
+        cy.get('select[name="present_address_division_id"]').select('Dhaka');
+        cy.get('select[name="present_address_district_id"]').select('Dhaka');
+        cy.get('input[name="present_address_post_office"]').type('1207');
+        cy.get('label.image-upload.square input[name="photo"]').attachFile('ssc.jpg');
+        cy.get('label.image-upload.square input[name="signature"]').attachFile('hsc.jpg');
+        cy.get('input.btn.btn-primary.px-4.py-2.fw-medium').click();   
 
     });
 
-    it('View Job details and Login', () => {
-
-    });
-});
+})

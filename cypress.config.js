@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: 'cypress/Jobs/**/*.cy.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/Polytecnic/**/*.cy.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
 
     },
